@@ -1,0 +1,87 @@
+*{
+    /*outline: 1px solid rgba(0, 0, 0, 0.123);*/
+}
+
+body, html {
+    display: flex;
+    flex-direction: column;
+	height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    /*outline: 1px solid rgba(255, 0, 0, 0.5);*/
+
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    width: 75%;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 10px groove #0f6096;
+}
+
+.result-container{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+
+    
+}
+
+.result{
+    font-family:cursive;
+    font-size: min(3vw, 20px);
+    width: 30%;
+    
+}
+
+.play-card{
+    display: flex;
+    width: 75%;
+    justify-content: space-between;
+    /*outline: 1px solid rgba(81, 255, 0, 0.5);*/
+
+}
+
+
+button{
+    display: block;
+    width: 20%;
+    margin: 0;
+    padding: 0;
+    background:none;  
+}
+
+.player .images{
+    display: block;
+
+    width: 100%;
+    z-index: -2;
+
+}
+.computer .images{
+    display: block;
+
+    width: 20%;
+    z-index: -2;
+
+}
+
+@media (min-width: 800px) {
+
+    .flex-container {
+        width: 600px;
+    }
+
+    .result-container{
+        width:350px;
+    }
+
+    .play-card{
+        width: 500px;
+    
+    }
+}

@@ -1,47 +1,71 @@
 
-function game(){
-    let numberOfWin=0;
-    let numberOfLoss=0;
-    let numberOfDraw=0;
+const rockBtn = document.querySelector("#rock-btn");
+const paperBtn = document.querySelector("#paper-btn");
+const scissorsBtn = document.querySelector("#scissors-btn");
 
-    let oneRoundGameResult;
+const winResult = document.querySelector("#win-result");
+const drawResult = document.querySelector("#draw-result");
+const looseResult = document.querySelector("#loose-result");
 
-    for (i=0; i<5;i++){
-        oneRoundGameResult = oneRoundGame(playerPlay(),computerPlay());
-        if (oneRoundGameResult === 'Win'){
-            numberOfWin++;
-            console.log("you: " + numberOfWin + ', computer :' + numberOfLoss + ', Draw: ' + numberOfDraw)
-        }
-        else if (oneRoundGameResult === 'Loss'){
-            numberOfLoss++;
-            console.log("you: " + numberOfWin + ', computer :' + numberOfLoss + ', Draw: ' + numberOfDraw)
+let numberOfWin=0;
+let numberOfLoss=0;
+let numberOfDraw=0;
+let numberOfRoundPlayed=0;
 
-        }else {
-            numberOfDraw++;
-            console.log("you: " + numberOfWin + ', computer :' + numberOfLoss + ', Draw: ' + numberOfDraw)
-        }
+rockBtn.addEventListener('click' , () => game("ROCK"));
+paperBtn.addEventListener('click' , () => game("PAPER"));
+scissorsBtn.addEventListener('click' ,() =>  game("SCISSORS"));
+
+
+
+
+function game(playerSelection){
+
+    oneRoundGame(playerSelection, computerPlay());
+
+    let numberOfRound = 5;
+
+
+    
+    if(numberOfRoundPlayed >= numberOfRound){
+        numberOfWin > numberOfLoss ? alert("you win") : 
+        numberOfWin < numberOfLoss ? alert("you Loss") : alert("it's draw");
+
+        numberOfWin=0;
+        numberOfLoss=0;
+        numberOfDraw=0;
+        numberOfRoundPlayed=0;
+
     }
-    numberOfWin > numberOfLoss ? console.log("you win") : 
-    numberOfWin < numberOfLoss ? console.log("you Loss") : console.log("it's draw");
+    
+    winResult.textContent = numberOfWin;
+    drawResult.textContent = numberOfDraw;
+    looseResult.textContent =  numberOfLoss;
 
 }
 
 function oneRoundGame(playerSelection, computerSelection){
+    numberOfRoundPlayed++;
+
     if (playerSelection === computerSelection){
-        return 'Draw'
+        numberOfDraw++;
     }
     else if ((playerSelection === 'ROCK' && computerSelection === 'SCISSORS') ||
              (playerSelection === 'PAPER' && computerSelection === 'ROCK') ||
              (playerSelection === 'SCISSORS' && computerSelection === 'PAPER')){
-                 return 'Win';
+                numberOfWin++;
              }
     else {
-        return 'Loss';
+        numberOfLoss++;
     }
+
 }
 
 function playerPlay(){
-    let playerPlay = (prompt('What is your play (Rock, Paper, Scissors)?').toUpperCase());
+
+
+
+    /*let playerPlay = (prompt('What is your play (Rock, Paper, Scissors)?').toUpperCase());
     let isPromptAciptable = false;
 
     while (!isPromptAciptable){
@@ -52,7 +76,9 @@ function playerPlay(){
         }
         
     }
-    return playerPlay; 
+    return playerPlay; */
+
+
 }
 
 function computerPlay(){
@@ -76,4 +102,3 @@ function randomNumber(n = 1){
 
 
 
-console.log(game());
